@@ -1,27 +1,33 @@
 # dotfiles
 
-Neovim と tmux の設定管理リポジトリです。家と職場の環境を同期するために使用します。
+Neovim (`nvim`) と `tmux` の設定を管理・同期するためのリポジトリです。
+家と職場の環境を共通化するために使用します。
 
-## 1. 初回セットアップ (新しいPCで使う時)
+---
 
-リポジトリをクローンし、既存の設定をバックアップしてからコピーします。
+## 1. 初回セットアップ (新しいPCで初めて使う場合)
+
+GitHub から設定を取得し、現在の PC に反映させます。
 
 ```bash
-# クローン
-git clone [https://github.com/yupimantarou/dotfiles.git](https://github.com/yupimantarou/dotfiles.git) ~/dotfiles
+# リポジトリをホームディレクトリにクローン
+git clone https://github.com/yupimantarou/dotfiles.git ~/dotfiles
 
 # 既存設定のバックアップ（念のため）
 mv ~/.config/nvim ~/.config/nvim_backup
 mv ~/.tmux.conf ~/.tmux.conf_backup
 
-# 反映（コピー）
+# 設定ファイルを反映（コピー）
 mkdir -p ~/.config
 cp -r ~/dotfiles/nvim ~/.config/
 cp ~/dotfiles/.tmux.conf ~/
+```
 
-## 2. 設定を保存する手順 (変更を加えた PC A で実行)
+---
 
-設定を変更して「これを GitHub に保存したい」と思った時に実行します。
+## 2. 設定を保存する手順 (変更を加えた側の PC で実行)
+
+設定をいじって「これを GitHub に保存したい」と思った時に実行します。
 
 ```bash
 # 1. 本来の場所にある最新設定を dotfiles フォルダへ集める
@@ -33,7 +39,15 @@ cd ~/dotfiles
 git add .
 git commit -m "Update config: $(date +'%Y-%m-%d %H:%M:%S')"
 git push origin main
+```
 
+---
+
+## 3. 設定を反映する手順 (最新設定を受け取る側の PC で実行)
+
+もう一方の PC で、GitHub にある最新の設定を自分の PC に取り込みたい時に実行します。
+
+```bash
 # 1. GitHub から最新の状態をダウンロード
 cd ~/dotfiles
 git pull origin main
@@ -43,3 +57,20 @@ git pull origin main
 rm -rf ~/.config/nvim
 cp -r ~/dotfiles/nvim ~/.config/
 cp ~/dotfiles/.tmux.conf ~/
+```
+
+---
+
+## 4. (推奨) コピー作業を自動化する (シンボリックリンク)
+
+毎回 `cp` コマンドを打つのが面倒な場合は、以下のコマンドを**一度だけ**実行してください。
+`~/dotfiles` 内のファイルを編集するだけで、自動的に PC の設定も更新されるようになります。
+
+```bash
+# 既存のファイルを削除してリンク（ショートカット）を作成
+rm -rf ~/.config/nvim
+rm ~/.tmux.conf
+
+ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+```
