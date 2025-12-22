@@ -1,17 +1,17 @@
 # dotfiles
 
-Neovim (`nvim`) と `tmux` の設定を管理・同期するためのリポジトリです。
-家と職場の環境を共通化するために使用します。
+Neovim (`nvim`) と `tmux` の設定を管理・同期するためのリポジトリである。
+家と職場の環境を共通化するために使用する。
 
 ---
 
 ## 1. 初回セットアップ (新しいPCで初めて使う場合)
 
-GitHub から設定を取得し、現在の PC に反映させます。
+GitHub から設定を取得し、現在の PC に反映する。
 
 ```bash
 # リポジトリをホームディレクトリにクローン
-git clone https://github.com/yupimantarou/dotfiles.git ~/dotfiles
+git clone [https://github.com/yupimantarou/dotfiles.git](https://github.com/yupimantarou/dotfiles.git) ~/dotfiles
 
 # 既存設定のバックアップ（念のため）
 mv ~/.config/nvim ~/.config/nvim_backup
@@ -53,7 +53,7 @@ cd ~/dotfiles
 git pull origin main
 
 # 2. 現在の PC の設定を最新版で上書き
-# (既存の設定を一度削除してからコピーします)
+# (既存の設定を一度削除してからコピーする)
 rm -rf ~/.config/nvim
 cp -r ~/dotfiles/nvim ~/.config/
 cp ~/dotfiles/.tmux.conf ~/
