@@ -1,7 +1,3 @@
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
--- Here are some examples:
-
 ---@type LazySpec
 return {
 
@@ -82,36 +78,5 @@ return {
         Rule("a", "a", "-vim")
       )
     end,
-  },
-  -- 透明化プラグインを追加
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-    opts = {
-      -- Neo-tree やステータスラインなども透明化の対象に加える
-      extra_groups = {
-        "NeoTreeNormal",
-        "NeoTreeNormalNC",
-        "NeoTreeEndOfBuffer",
-        "NeoTreeFloatNormal",
-        "NeoTreeWinSeparator",
-        "NormalFloat", -- フローティングウィンドウも透明にしたい場合
-        "TabLine", -- 上部のタブバー
-        "TabLineFill",
-        "StatusLine",
-        "StatusLineNC",
-        "WinBar",
-        "WinBarNC",
-        -- ステータスバー（AstroVim専用）
-        "StatusLine",
-        "StatusLineNC",
-        "AstroStatusLine",
-        "AstroStatusLineNC",
-        "AstroStatusLineCustom",
-        -- 境界線やその他
-        "WinSeparator",
-        "VertSplit",
-      },
-    },
   },
 }
